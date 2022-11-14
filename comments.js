@@ -48,7 +48,7 @@ console.log(posts)
 // doing some testing
 const art = document.createElem('article')
 art.data-post-id = 
-document.body.appendChild(art)
+main.appendChild(art)
 
 const head = document.createElem('h2')
 head.textContent = 
@@ -65,6 +65,9 @@ para.textContent =
 art.appendChild(para)
 
 const det = document.createElem('details')
+main.appendChild(det)
+// attempting to add toggle attribute
+det.toggleAttribute('hiden')
 
 const sum = document.createElem('summary')
 sum.textContent = "See what our readers had to say..."
@@ -80,8 +83,8 @@ const header3 = document.createElem('h3')
 header3.textContent = 
 headset.appendChild(header3)
 
-const asides = documet.createElem('aside')
-const para1 = document.createElem('p')
-asides.appendChild(para1)
-const para2 = document.createElem('p')
-asides.appendChild(para2)
+// const asides = documet.createElem('aside')
+// const para1 = document.createElem('p')
+// asides.appendChild(para1)
+// const para2 = document.createElem('p')
+// asides.appendChild(para2)
