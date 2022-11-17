@@ -42,7 +42,7 @@ for (const detail of details) {
 	});
 }
 
-const posts = await downloadPosts();
+const posts = await downloadPosts(2);
 console.log(posts);
 
 // function to replace new lines with br
@@ -72,8 +72,8 @@ async function fillElements(obj) {
 		art.appendChild(myAside);
 		// create paragraph
 		const myPara = document.createElement("p");
-		let myBody = objective.body;
-		myPara.innerHTML = newLine(myBody);
+		// call newLine to replace new line with <br>
+		myPara.innerHTML = newLine(objective.body);
 		art.appendChild(myPara);
 		// add detail section
 		const det = document.createElement("details");
@@ -98,9 +98,24 @@ async function fillElements(obj) {
 					const articleId = getArticleId(det);
 					const comments = await downloadComments(articleId);
 					console.log(comments);
+					// add code to create asides
+					for (const comment of comments) {
+						const comAside = document.createElement("aside");
+						mySec.appendChild(comAside);
+						const description = document.createElement("p");
+						console.log(comment.body);
+						description.textContent = comment.body;
+						comAside.appendChild(description);
+						const second = document.createElement("p");
+						const s = document.createElement("small");
+						s.textContent = comment.name;
+						second.appendChild(s);
+						comAside.appendChild(second);
+					}
 				}
 			}
 		});
+		// continue code to add comments
 	}
 }
 fillElements(posts);
